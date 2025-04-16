@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import LinearProgress from '@mui/material/LinearProgress';
+import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import LinearProgress from '@mui/material/LinearProgress';
 import IconButton from '@mui/material/IconButton';
-
+import Stack from '@mui/material/Stack';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 export default function Home() {
@@ -15,53 +15,61 @@ export default function Home() {
     <Box
       sx={{
         minHeight: '100vh',
-        width: '100%',
-        background: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)', // Dark gradient
+        background: 'linear-gradient(135deg,rgb(37, 39, 15), #203a43, #2c5364)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 4,
+        px: 2,
         textAlign: 'center',
         color: '#fff',
       }}
     >
-      <Box sx={{ maxWidth: 600, width: '100%' }}>
-        <Typography variant="h3" sx={{ fontWeight: 600 }} gutterBottom>
+      <Box sx={{ width: '100%', maxWidth: 500 }}>
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: 'bold', mb: 1, wordBreak: 'break-word' }}
+        >
           UNDER CONSTRUCTION
         </Typography>
 
-        <Typography variant="subtitle1" sx={{ mb: 3 }}>
+        <Typography variant="subtitle1" sx={{ mb: 2 }}>
           SITE NEARLY READY
         </Typography>
 
-        <LinearProgress variant="determinate" value={95} sx={{ mb: 3, height: 10, borderRadius: 5 }} />
+        <LinearProgress
+          variant="determinate"
+          value={90}
+          sx={{
+            mb: 3,
+            height: 10,
+            borderRadius: 5,
+            backgroundColor: 'rgba(250, 207, 67, 0.1)',
+            '& .MuiLinearProgress-bar': {
+              backgroundColor: '#9c27b0',
+            },
+          }}
+        />
 
         <Button
           variant="contained"
           color="primary"
           href="mailto:spascaru@gmail.com"
-          sx={{ mb: 5, textTransform: 'none', px: 4 }}
+          sx={{ mb: 4, px: 4 }}
         >
-          Notify Me
+          Get in touch
         </Button>
 
-        <Stack direction="row" spacing={3} justifyContent="center" sx={{ mb: 4 }}>
-          <IconButton color="inherit" href="https://facebook.com" target="_blank">
+        <Stack direction="row" spacing={3} justifyContent="center" sx={{ mb: 2 }}>
+          <IconButton color="inherit" href="https://www.facebook.com/sorinel.pascaru?mibextid=wwXIfr&rdid=ivtaauHyjJoXHXAn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18Cf9V4N7M%2F%3Fmibextid%3DwwXIfr#" target="_blank">
             <FacebookIcon />
-          </IconButton>
-          <IconButton color="inherit" href="https://linkedin.com" target="_blank">
-            <LinkedInIcon />
           </IconButton>
           <IconButton color="inherit" href="https://instagram.com" target="_blank">
             <InstagramIcon />
           </IconButton>
-          <IconButton color="inherit" href="https://twitter.com" target="_blank">
-            <TwitterIcon />
-          </IconButton>
         </Stack>
 
-        <Typography variant="caption" sx={{ opacity: 0.7 }}>
-          © 2024 Pilgrimage Rome. All rights reserved.
+        <Typography variant="caption">
+          © 2024 Ghid Teolog Roma. All rights reserved.
         </Typography>
       </Box>
     </Box>
