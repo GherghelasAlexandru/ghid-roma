@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Church, Heart, Crown, Scroll } from "lucide-react";
+import { Church, Heart, Crown, Scroll, Landmark } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "./ui/button";
 
@@ -58,6 +58,22 @@ export const AboutRome = () => {
                     </h3>
                     <p className="text-roman-deep/80">
                       {t('about.heritage.desc')}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-roman-stone/20 hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <Landmark className="h-8 w-8 text-roman-gold mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                      {t('about.explore')}
+                    </h3>
+                    <p className="text-roman-deep/80">
+                      {t('about.explore.desc')}
                     </p>
                   </div>
                 </div>
@@ -163,7 +179,7 @@ export const AboutRome = () => {
             
           </div>
            <p className="text-lg text-roman-deep/80  mx-auto px-4 mt-8 text-center">
-              Durata circa 8 ore (depinde mult de cât de voioși sunteți, de câte fotografii veți face, de îmbulzeală, de numărul de pelerini ajunși înaintea noastră, de trafic, de orarul deschiderii obiectivelor turistice etc).
+             {t('itinerary.transport.info')}
             </p>
           </div>
            

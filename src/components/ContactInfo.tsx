@@ -79,11 +79,11 @@ export const ContactInfo = () => {
                   <div className="space-y-3 text-roman-deep/80">
                     <div className="flex items-start gap-3">
                       <GraduationCap className="h-5 w-5 text-roman-gold mt-1 flex-shrink-0" />
-                      <p>Absolvent al Facultății de Teologie Ortodoxă "Iustinian Patriarhul" din București, actual masterand</p>
+                      {t('sorin.university')}
                     </div>
                     <div className="flex items-start gap-3">
                       <MapPin className="h-5 w-5 text-roman-gold mt-1 flex-shrink-0" />
-                      <p>Bun cunoscător al Italiei, cu reședința neîntreruptă în orașul Roma de 29 de ani</p>
+                       {t('sorin.experience')}
                     </div>
                   </div>
                 </div>
@@ -130,7 +130,7 @@ export const ContactInfo = () => {
                   {t('contact.veni')}
                 </h3>
                 <p className="text-lg mb-6">
-                  🙏 {t('contact.pilgrims')}
+                   {t('contact.pilgrims')}
                 </p>
                 <div className="space-y-2 text-roman-stone">
                   <p>Iubi-Te-Voi Doamne!</p>

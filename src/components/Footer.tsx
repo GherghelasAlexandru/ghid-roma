@@ -1,4 +1,4 @@
-import { Church, Facebook, Instagram, Mail } from "lucide-react";
+import { Church, Clock, Facebook, Instagram, Mail, Phone } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export const Footer = () => {
@@ -25,10 +25,31 @@ export const Footer = () => {
               {t('footer.quick')}
             </h3>
             <div className="space-y-2 text-roman-stone">
-              <p>📞 IT: +39 347 521 7639</p>
-              <p>📞 RO: +40 723 010 201</p>
-              <p>📧 spascaru@gmail.com</p>
-              <p>🕒 Luni-Vineri: 9:00-19:00</p>
+              <div className="flex items-center gap-4">
+                  <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                  <div>
+                    <p>IT: +39 347 521 7639</p>
+                  </div>
+              </div>
+               <div className="flex items-center gap-4">
+                  <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                  <div>
+                    <p>RO: +40 723 010 201</p>
+                  </div>
+              </div>
+              <div className="flex items-center gap-4">
+                  <Mail className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                  <div>
+                    <p>spascaru@gmail.com</p>
+                  </div>
+              </div>
+              <div className="flex items-center gap-4">
+                  <Clock className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                  <div>
+                    <p>Luni-Vineri: 9:00-19:00</p>
+                  </div>
+              </div>
+             
             </div>
           </div>
 
