@@ -68,7 +68,7 @@ const translations = {
     
     // Itinerary
     'itinerary.title': 'Itinerarul Pelerinajului',
-    'itinerary.description': 'Un program complet de 6 zile prin cele mai importante locuri sfinte din Roma, cu ghid specializat și transport inclus.',
+    'itinerary.description': 'Un program complet de 6 zile prin cele mai importante locuri sfinte din Roma, cu ghid specializat și transport inclus. (aceasta poate avea mici modificări)',
     'itinerary.days': '6 Zile',
     'itinerary.days.desc': 'Program complet',
     'itinerary.people': '4-8 Persoane',
@@ -87,7 +87,8 @@ const translations = {
     'contact.description': 'Pentru informații și rezervări, contactați-ne de Luni - Vineri: 9:00 - 19:00',
     'contact.info': 'Informații de Contact',
     'contact.guide': 'Ghidul Dumneavoastră',
-    'contact.society': 'SOCIETATEA ORA ET LABORA',
+    'contact.offer': 'ÎNSOȚITOR TURISTIC în Capitala Roma și prin împrejmuiri , Teolog Pascaru Sorinel ,absolvent al Facultății de Teologie Ortodoxă Iustinian Patriarhul din București  ,actual masteran al aceeași Facultăți ,  bun cunoscător al Italiei , cu reședința neîntreruptă în orașul Roma de 29 de ani .',
+    'contact.society': 'Societatea ora et labora vă oferă',
     'contact.essence': 'Esența Romei: oraș al cărui orice loc spune o poveste și unde orice piatră este un ecou al trecutului! Este un loc unde timpul pare să se oprească!',
     'contact.services': 'Servicii Incluse:',
     'contact.book': 'Rezervă Pelerinajul Acum',
@@ -152,7 +153,7 @@ const translations = {
     'contact.description': 'For information and reservations, contact us Monday - Friday: 9:00 - 19:00',
     'contact.info': 'Contact Information',
     'contact.guide': 'Your Guide',
-    'contact.society': 'ORA ET LABORA SOCIETY',
+    'contact.society': 'ORA ET LABORA SOCIETY ',
     'contact.essence': 'The essence of Rome: a city whose every place tells a story and where every stone is an echo of the past! It is a place where time seems to stop!',
     'contact.services': 'Services Included:',
     'contact.book': 'Book Pilgrimage Now',

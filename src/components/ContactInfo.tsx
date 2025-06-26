@@ -96,14 +96,11 @@ export const ContactInfo = () => {
             <Card className="border-roman-stone/20 shadow-lg">
               <CardHeader className="bg-roman-gold text-white">
                 <CardTitle className="font-playfair text-2xl text-center">
-                  {t('contact.society')}
+                  ROMA = AMOR
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8 text-center">
                 <div className="mb-8">
-                  <h3 className="font-playfair text-3xl font-bold text-roman-deep mb-4">
-                    ROMA = AMOR
-                  </h3>
                   <p className="text-lg text-roman-deep/80 leading-relaxed">
                     {t('contact.essence')}
                   </p>
@@ -114,7 +111,7 @@ export const ContactInfo = () => {
                     <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-4">
                       {t('contact.services')}
                     </h4>
-                    <ul className="text-left space-y-2 text-roman-deep/80">
+                    <ul className="text-center space-y-2 text-roman-deep/80">
                       <li>• Ghid turistic specializat</li>
                       <li>• Transport de lux (Tesla/Microbuz)</li>
                       <li>• Preluare de la hotel</li>
@@ -123,13 +120,6 @@ export const ContactInfo = () => {
                       <li>• Rezervări hoteluri la preț bun</li>
                     </ul>
                   </div>
-                  
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-roman-gold hover:bg-roman-terracotta text-white font-semibold py-4 text-lg"
-                  >
-                    {t('contact.book')}
-                  </Button>
                 </div>
               </CardContent>
             </Card>

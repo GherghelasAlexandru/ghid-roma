@@ -51,9 +51,6 @@ export const Footer = () => {
             © 2024 Centro de Pelerinaje Roma - Societatea Ora et Labora. 
             {t('footer.rights')}
           </p>
-          <p className="text-roman-gold mt-2 font-playfair">
-            {t('footer.quote')}
-          </p>
         </div>
       </div>
     </footer>

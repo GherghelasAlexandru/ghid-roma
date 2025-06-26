@@ -70,7 +70,135 @@ export const Itinerary = () => {
           relics: ["Primii episcopi creștini"]
         }
       ]
-    }
+    },
+    {
+      day: 4,
+      title: "A Patra Zi prin Roma",
+      highlights: [
+        "San Lorenzo fuori le Mura", "Biserica Sacro Cuore di Gesù", "Sinagoga Evreiască",
+        "Santa Maria in Trastevere", "San Francesco a Ripa", "Colina Aventino"
+      ],
+      locations: [
+        {
+          name: "Chiesa San Lorenzo fuori le Mura",
+          description: "A șasea din cele 7 Bazilici. Trupul Arhidiaconului Laurențiu și Ștefan Protomartir, mormintele a 5 papi.",
+          relics: ["Moaștele Sfântului Laurențiu", "Moaștele Sfântului Ștefan Protomartir", "Morminte ale papilor"]
+        },
+        {
+          name: "Biserica Sacro Cuore di Gesù",
+          description: "Biserică gotică dedicată Inimii Sacre a lui Iisus.",
+          relics: []
+        },
+        {
+          name: "Sinagoga Evreiască (exterior)",
+          description: "Sinagoga impresionantă a Romei, construită în 1900.",
+          relics: []
+        },
+        {
+          name: "Basilica Santa Maria in Trastevere",
+          description: "Prima biserică dedicată Maicii Domnului, sec. IV, mozaic bizantin.",
+          relics: []
+        },
+        {
+          name: "Chiesa San Francesco a Ripa (Trastevere)",
+          description: "Biserică franciscană fondată în 1209.",
+          relics: []
+        },
+        {
+          name: "Colina Aventino",
+          description: "Panoramă asupra Romei, bisericile Sant'Alessio și Santa Sabina.",
+          relics: []
+        }
+      ]
+    },
+    {
+      day: 5,
+      title: "A Cincea Zi prin Roma",
+      highlights: [
+        "Vaticanul", "Castel Sant'Angelo", "Colina Pincio", "Catacombe Santa Priscilla", "EUR Laghetto"
+      ],
+      locations: [
+        {
+          name: "Vatican - Basilica San Pietro",
+          description: "A șaptea Bazilică. Adăpostește moaștele Sf. Petru și ale altor sfinți. Cupola proiectată de Michelangelo.",
+          relics: ["Moaștele Sfântului Petru", "Moaștele apostolilor Simon și Iuda", "Moaștele Sf. Grigorie de Nazianz"]
+        },
+        {
+          name: "Castel Sant'Angelo",
+          description: "Fost mausoleu imperial, astăzi muzeu. Legat de Vatican prin Passetto.",
+          relics: []
+        },
+        {
+          name: "Colina Pincio și Gianicolo",
+          description: "Vedere panoramică asupra Romei.",
+          relics: []
+        },
+        {
+          name: "Catacombe Santa Priscilla",
+          description: "Catacombe din sec. II-V, cu cea mai veche icoană a Maicii Domnului.",
+          relics: ["Icoana Maicii Domnului (sec. II)"]
+        },
+        {
+          name: "EUR Laghetto",
+          description: "Zonă modernă, lac artificial.",
+          relics: []
+        }
+      ]
+    },
+    {
+      day: 6,
+      title: "A Șasea Zi prin Roma",
+      highlights: [
+        "Columna lui Traian", "Forul Roman", "Monumentul Victorian", "Santa Maria Aracoeli", "Piazza Navona", "Piazza di Spagna", "Fontana di Trevi", "Pantheon", "Piazza del Popolo"
+      ],
+      locations: [
+        {
+          name: "Colonna di Traiano",
+          description: "Coloana lui Traian, 113 dHr, descrie cucerirea Daciei.",
+          relics: []
+        },
+        {
+          name: "Forul Roman",
+          description: "Centrul vieții politice și religioase din Roma antică.",
+          relics: []
+        },
+        {
+          name: "Monumento Vittoriano (Altarul Patriei)",
+          description: "Monument impunător, construit între 1885–1935.",
+          relics: []
+        },
+        {
+          name: "Chiesa Santa Maria in Aracoeli",
+          description: "Biserică medievală, Altarul Cerului.",
+          relics: []
+        },
+        {
+          name: "Piazza Navona",
+          description: "Celebră pentru cele trei fântâni baroce și atmosfera vibrantă.",
+          relics: []
+        },
+        {
+          name: "Piazza di Spagna",
+          description: "Scările Trinità dei Monti, vedere panoramică.",
+          relics: []
+        },
+        {
+          name: "Fontana di Trevi",
+          description: "Cea mai celebră fântână barocă din lume.",
+          relics: []
+        },
+        {
+          name: "Pantheon",
+          description: "Templu antic, azi biserică; cea mai veche clădire în uz continuu.",
+          relics: []
+        },
+        {
+          name: "Piazza del Popolo",
+          description: "Piață renumită, poarta nordică a Romei.",
+          relics: []
+        }
+      ]
+    },
   ];
 
   return (
@@ -123,7 +251,7 @@ export const Itinerary = () => {
 
         {/* Day Selector */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {[1, 2, 3].map((day) => (
+          {[1, 2, 3, 4, 5, 6].map((day) => (
             <Button
               key={day}
               variant={selectedDay === day ? "default" : "outline"}
@@ -185,31 +313,7 @@ export const Itinerary = () => {
           )
         ))}
 
-        {/* Transport Info */}
-        <div className="mt-12 bg-roman-marble rounded-lg p-8">
-          <h3 className="font-playfair text-2xl font-bold text-roman-deep mb-6 text-center">
-            {t('itinerary.transport.title')}
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.options')}</h4>
-              <ul className="space-y-2 text-roman-deep/80">
-                <li>• <strong>4 persoane:</strong> Tesla Model S (NT-78-VIS)</li>
-                <li>• <strong>8 persoane:</strong> Microbuz VAN Opel Vivaro (NT-27-VIS)</li>
-                <li>• <strong>1 persoană:</strong> Harley Davidson Fortyeiht 1200 XL</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.program')}</h4>
-              <ul className="space-y-2 text-roman-deep/80">
-                <li>• <strong>Plecare:</strong> ora 9:00 din hotel</li>
-                <li>• <strong>Durata:</strong> circa 8 ore pe zi</li>
-                <li>• <strong>Întoarcere:</strong> la locul de cazare</li>
-                <li>• <strong>Pentru slujitorii altarului:</strong> GRATIS</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    
       </div>
     </section>
   );
