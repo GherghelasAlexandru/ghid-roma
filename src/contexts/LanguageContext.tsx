@@ -3,10 +3,23 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export type Language = 'ro' | 'en' | 'it';
 
+export interface ItineraryLocation {
+  name: string;
+  description: string;
+  relics: string[];
+}
+
+export interface ItineraryDay {
+  title: string;
+  highlights: string[];
+  locations: ItineraryLocation[];
+}
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  getItineraryDays: () => ItineraryDay[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -30,8 +43,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     return translations[language][key] || key;
   };
 
+  const getItineraryDays = () => {
+  return translations[language]['itinerary.daysData'] || [];
+};
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, getItineraryDays }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -86,7 +103,6 @@ const translations = {
       'PANTEONUL ( 27 ÎHr) 112-124. Ex: Templu al mai multor zeități , actual Biserică creștină, singura clădire din lume cu o gaură în tavan cu diametrul de 9 metri , care din sediu păgân devine clădire religioasă în anul 312',
       'VATICANUL ( 64 D Hr ) 1506-1626 , cel mai mic stat din lume ... unde este corpul patronului orașului Sfântul Petru',
     ],  
-      
     
     // Itinerary
     'itinerary.title': 'Itinerarul Pelerinajului',
@@ -104,7 +120,255 @@ const translations = {
     'itinerary.transport.options': 'Opțiuni de Transport:',
     'itinerary.transport.program': 'Program:',
     'itinerary.transport.info': 'Durata circa 8 ore (depinde mult de cât de voioși sunteți, de câte fotografii veți face, de îmbulzeală, de numărul de pelerini ajunși înaintea noastră, de trafic, de orarul deschiderii obiectivelor turistice etc).',
-    
+    'itinerary.relics': 'Relicve și Moaște',
+
+    'itinerary.daysData': [
+      {
+        title: "Prima Zi prin Roma",
+        highlights: [
+          "Santa Croce in Gerusaleme", 
+          "Basilica San Giovanni", 
+          "Scala Santa", 
+          "Santa Maria Maggiore"
+        ],
+        locations: [
+          {
+            name: "Chiesa Santa Croce in Gerusaleme",
+            description: "Prima din cele 7 Bazilici. Construită lângă reședință Sfintei Împărătesei Elena. Relicvele Pătimirii Domnului.",
+            relics: [
+              "Bucată din Crucea Mântuitorului",
+              "Un cui care a străpuns pe Hristos",
+              "Degetul Apostolului Toma"
+            ]
+          },
+          {
+            name: "Basilica San Giovanni",
+            description: "A doua din cele 7 importante. Cea mai veche din Roma (318), Catedrala Romei.",
+            relics: [
+              "Botezătorul și Evanghelistul Ioan"
+            ]
+          },
+          {
+            name: "Scala Santa",
+            description: "Scara (28 de trepte) pe care Mântuitorul a urcat în Pretoriu la Pilat.",
+            relics: [
+              "Adusă prin poruncă Sfintei Împărătese Elena în anul 326"
+            ]
+          }
+        ]
+      },
+      {
+        title: "A Doua Zi prin Roma",
+        highlights: [
+          "Basilica San Paolo",
+          "Santa Maria degli Angeli",
+          "Santa Prassede",
+          "Coloseul"
+        ],
+        locations: [
+          {
+            name: "Basilica San Paolo Fuori le Mura",
+            description: "Mormântul Apostolului Pavel. A patra din cele 7 Bazilici importante.",
+            relics: [
+              "Apostolul Pavel - cel mai influent misionar creștin"
+            ]
+          },
+          {
+            name: "Chiesa Santa Prassede",
+            description: "Locul martirelor surorile Pudenziana și Prassede.",
+            relics: [
+              "Moaște ale 2300 de mucenici (13 Papi)",
+              "Coloana de care a fost legat Mântuitorul"
+            ]
+          },
+          {
+            name: "Colosseo",
+            description: "Amfiteatru Flavio, locul Sfânt unde au murit mii de creștini.",
+            relics: [
+              "Construcție antică cea mai bine conservată (72-80 dHr)"
+            ]
+          }
+        ]
+      },
+      {
+        title: "A Treia Zi prin Roma",
+        highlights: [
+          "Via Appia Antica",
+          "Chiesa San Sebastiano",
+          "Catacombe",
+          "Isola Tiberina"
+        ],
+        locations: [
+          {
+            name: "Chiesa San Sebastiano",
+            description: "A cincea din cele 7 importante. Biserică Constantiniană din sec. IV.",
+            relics: [
+              "Moaște de la Sf. Ap. Petru și Pavel",
+              "Piatra cu amprenta picioarelor Mântuitorului"
+            ]
+          },
+          {
+            name: "Catacombe San Sebastiano",
+            description: "Locul unde au fost înmormântați primii papi. La Roma sunt peste 60 de km de Catacombe.",
+            relics: [
+              "Primii episcopi creștini"
+            ]
+          }
+        ]
+      },
+      {
+        title: "A Patra Zi prin Roma",
+        highlights: [
+          "San Lorenzo fuori le Mura",
+          "Biserica Sacro Cuore di Gesù",
+          "Sinagoga Evreiască",
+          "Santa Maria in Trastevere",
+          "San Francesco a Ripa",
+          "Colina Aventino"
+        ],
+        locations: [
+          {
+            name: "Chiesa San Lorenzo fuori le Mura",
+            description: "A șasea din cele 7 Bazilici. Trupul Arhidiaconului Laurențiu și Ștefan Protomartir, mormintele a 5 papi.",
+            relics: [
+              "Moaștele Sfântului Laurențiu",
+              "Moaștele Sfântului Ștefan Protomartir",
+              "Morminte ale papilor"
+            ]
+          },
+          {
+            name: "Biserica Sacro Cuore di Gesù",
+            description: "Biserică gotică dedicată Inimii Sacre a lui Iisus.",
+            relics: []
+          },
+          {
+            name: "Sinagoga Evreiască (exterior)",
+            description: "Sinagoga impresionantă a Romei, construită în 1900.",
+            relics: []
+          },
+          {
+            name: "Basilica Santa Maria in Trastevere",
+            description: "Prima biserică dedicată Maicii Domnului, sec. IV, mozaic bizantin.",
+            relics: []
+          },
+          {
+            name: "Chiesa San Francesco a Ripa (Trastevere)",
+            description: "Biserică franciscană fondată în 1209.",
+            relics: []
+          },
+          {
+            name: "Colina Aventino",
+            description: "Panoramă asupra Romei, bisericile Sant'Alessio și Santa Sabina.",
+            relics: []
+          }
+        ]
+      },
+      {
+        title: "A Cincea Zi prin Roma",
+        highlights: [
+          "Vaticanul",
+          "Castel Sant'Angelo",
+          "Colina Pincio",
+          "Catacombe Santa Priscilla",
+          "EUR Laghetto"
+        ],
+        locations: [
+          {
+            name: "Vatican - Basilica San Pietro",
+            description: "A șaptea Bazilică. Adăpostește moaștele Sf. Petru și ale altor sfinți. Cupola proiectată de Michelangelo.",
+            relics: [
+              "Moaștele Sfântului Petru",
+              "Moaștele apostolilor Simon și Iuda",
+              "Moaștele Sf. Grigorie de Nazianz"
+            ]
+          },
+          {
+            name: "Castel Sant'Angelo",
+            description: "Fost mausoleu imperial, astăzi muzeu. Legat de Vatican prin Passetto.",
+            relics: []
+          },
+          {
+            name: "Colina Pincio și Gianicolo",
+            description: "Vedere panoramică asupra Romei.",
+            relics: []
+          },
+          {
+            name: "Catacombe Santa Priscilla",
+            description: "Catacombe din sec. II-V, cu cea mai veche icoană a Maicii Domnului.",
+            relics: [
+              "Icoana Maicii Domnului (sec. II)"
+            ]
+          },
+          {
+            name: "EUR Laghetto",
+            description: "Zonă modernă, lac artificial.",
+            relics: []
+          }
+        ]
+      },
+      {
+        title: "A Șasea Zi prin Roma",
+        highlights: [
+          "Columna lui Traian",
+          "Forul Roman",
+          "Monumentul Victorian",
+          "Santa Maria Aracoeli",
+          "Piazza Navona",
+          "Piazza di Spagna",
+          "Fontana di Trevi",
+          "Pantheon",
+          "Piazza del Popolo"
+        ],
+        locations: [
+          {
+            name: "Colonna di Traiano",
+            description: "Coloana lui Traian, 113 dHr, descrie cucerirea Daciei.",
+            relics: []
+          },
+          {
+            name: "Forul Roman",
+            description: "Centrul vieții politice și religioase din Roma antică.",
+            relics: []
+          },
+          {
+            name: "Monumento Vittoriano (Altarul Patriei)",
+            description: "Monument impunător, construit între 1885–1935.",
+            relics: []
+          },
+          {
+            name: "Chiesa Santa Maria in Aracoeli",
+            description: "Biserică medievală, Altarul Cerului.",
+            relics: []
+          },
+          {
+            name: "Piazza Navona",
+            description: "Celebră pentru cele trei fântâni baroce și atmosfera vibrantă.",
+            relics: []
+          },
+          {
+            name: "Piazza di Spagna",
+            description: "Scările Trinità dei Monti, vedere panoramică.",
+            relics: []
+          },
+          {
+            name: "Fontana di Trevi",
+            description: "Cea mai celebră fântână barocă din lume.",
+            relics: []
+          },
+          {
+            name: "Pantheon",
+            description: "Templu antic, azi biserică; cea mai veche clădire în uz continuu.",
+            relics: []
+          },
+          {
+            name: "Piazza del Popolo",
+            description: "Piață renumită, poarta nordică a Romei.",
+            relics: []
+          }
+        ]
+      }
+    ],
+
     // Contact
     'contact.title': 'Contact și Rezervări',
     'contact.description': 'Pentru informații și rezervări, contactați-ne de Luni - Vineri: 9:00 - 19:00',
@@ -197,7 +461,255 @@ const translations = {
     'itinerary.transport.options': 'Transport Options:',
     'itinerary.transport.program': 'Program:',
     'itinerary.transport.info': 'Duration about 8 hours (it greatly depends on your energy, how many photos you take, crowds, the number of pilgrims who arrived before us, traffic, opening hours of tourist attractions, etc).',
-    
+    'itinerary.relics': 'Relics',
+
+    'itinerary.daysData': [
+    {
+      title: "First Day in Rome",
+      highlights: [
+        "Santa Croce in Gerusaleme",
+        "Basilica San Giovanni",
+        "Scala Santa",
+        "Santa Maria Maggiore"
+      ],
+      locations: [
+        {
+          name: "Chiesa Santa Croce in Gerusaleme",
+          description: "The first of the 7 Basilicas. Built near the residence of Saint Empress Helena. Relics of the Passion of the Lord.",
+          relics: [
+            "A piece of the Savior’s Cross",
+            "A nail that pierced Christ",
+            "The finger of Apostle Thomas"
+          ]
+        },
+        {
+          name: "Basilica San Giovanni",
+          description: "The second of the 7 major basilicas. The oldest in Rome (318), Cathedral of Rome.",
+          relics: [
+            "John the Baptist and the Evangelist"
+          ]
+        },
+        {
+          name: "Scala Santa",
+          description: "The staircase (28 steps) that the Savior climbed in the Praetorium before Pilate.",
+          relics: [
+            "Brought at the command of Saint Empress Helena in the year 326"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Second Day in Rome",
+      highlights: [
+        "Basilica San Paolo",
+        "Santa Maria degli Angeli",
+        "Santa Prassede",
+        "Colosseum"
+      ],
+      locations: [
+        {
+          name: "Basilica San Paolo Fuori le Mura",
+          description: "The tomb of Apostle Paul. The fourth of the 7 major basilicas.",
+          relics: [
+            "Apostle Paul - the most influential Christian missionary"
+          ]
+        },
+        {
+          name: "Chiesa Santa Prassede",
+          description: "The place of martyrdom of sisters Pudenziana and Prassede.",
+          relics: [
+            "Relics of 2,300 martyrs (13 Popes)",
+            "The column to which the Savior was bound"
+          ]
+        },
+        {
+          name: "Colosseum",
+          description: "The Flavian Amphitheater, the holy place where thousands of Christians died.",
+          relics: [
+            "The best preserved ancient construction (72–80 AD)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Third Day in Rome",
+      highlights: [
+        "Via Appia Antica",
+        "Chiesa San Sebastiano",
+        "Catacombs",
+        "Isola Tiberina"
+      ],
+      locations: [
+        {
+          name: "Chiesa San Sebastiano",
+          description: "The fifth of the 7 major basilicas. Constantinian church from the 4th century.",
+          relics: [
+            "Relics of Sts. Peter and Paul",
+            "Stone with the imprint of the Savior’s feet"
+          ]
+        },
+        {
+          name: "Catacombe San Sebastiano",
+          description: "The place where the first popes were buried. In Rome there are over 60 km of catacombs.",
+          relics: [
+            "The first Christian bishops"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Fourth Day in Rome",
+      highlights: [
+        "San Lorenzo fuori le Mura",
+        "Sacro Cuore di Gesù Church",
+        "Jewish Synagogue",
+        "Santa Maria in Trastevere",
+        "San Francesco a Ripa",
+        "Aventine Hill"
+      ],
+      locations: [
+        {
+          name: "Chiesa San Lorenzo fuori le Mura",
+          description: "The sixth of the 7 Basilicas. The body of Archdeacon Lawrence and Stephen the Protomartyr, tombs of 5 popes.",
+          relics: [
+            "Relics of St. Lawrence",
+            "Relics of St. Stephen the Protomartyr",
+            "Tombs of popes"
+          ]
+        },
+        {
+          name: "Sacro Cuore di Gesù Church",
+          description: "Gothic church dedicated to the Sacred Heart of Jesus.",
+          relics: []
+        },
+        {
+          name: "Jewish Synagogue (exterior)",
+          description: "Rome’s impressive synagogue, built in 1900.",
+          relics: []
+        },
+        {
+          name: "Basilica Santa Maria in Trastevere",
+          description: "The first church dedicated to the Mother of God, 4th century, Byzantine mosaic.",
+          relics: []
+        },
+        {
+          name: "Chiesa San Francesco a Ripa (Trastevere)",
+          description: "Franciscan church founded in 1209.",
+          relics: []
+        },
+        {
+          name: "Aventine Hill",
+          description: "Panorama over Rome, churches of Sant'Alessio and Santa Sabina.",
+          relics: []
+        }
+      ]
+    },
+    {
+      title: "Fifth Day in Rome",
+      highlights: [
+        "The Vatican",
+        "Castel Sant'Angelo",
+        "Pincio Hill",
+        "Catacombs of Santa Priscilla",
+        "EUR Lake"
+      ],
+      locations: [
+        {
+          name: "Vatican - Basilica San Pietro",
+          description: "The seventh Basilica. Houses the relics of St. Peter and other saints. Dome designed by Michelangelo.",
+          relics: [
+            "Relics of St. Peter",
+            "Relics of Apostles Simon and Jude",
+            "Relics of St. Gregory of Nazianzus"
+          ]
+        },
+        {
+          name: "Castel Sant'Angelo",
+          description: "Former imperial mausoleum, now a museum. Connected to the Vatican by the Passetto.",
+          relics: []
+        },
+        {
+          name: "Pincio and Gianicolo Hill",
+          description: "Panoramic view over Rome.",
+          relics: []
+        },
+        {
+          name: "Catacombs of Santa Priscilla",
+          description: "Catacombs from the 2nd–5th centuries, with the oldest icon of the Mother of God.",
+          relics: [
+            "Icon of the Mother of God (2nd century)"
+          ]
+        },
+        {
+          name: "EUR Lake",
+          description: "Modern area, artificial lake.",
+          relics: []
+        }
+      ]
+    },
+    {
+      title: "Sixth Day in Rome",
+      highlights: [
+        "Trajan’s Column",
+        "Roman Forum",
+        "Vittoriano Monument",
+        "Santa Maria Aracoeli",
+        "Piazza Navona",
+        "Piazza di Spagna",
+        "Trevi Fountain",
+        "Pantheon",
+        "Piazza del Popolo"
+      ],
+      locations: [
+        {
+          name: "Trajan’s Column",
+          description: "Trajan’s Column, 113 AD, depicts the conquest of Dacia.",
+          relics: []
+        },
+        {
+          name: "Roman Forum",
+          description: "The center of political and religious life in ancient Rome.",
+          relics: []
+        },
+        {
+          name: "Vittoriano Monument (Altar of the Fatherland)",
+          description: "Imposing monument, built between 1885–1935.",
+          relics: []
+        },
+        {
+          name: "Chiesa Santa Maria in Aracoeli",
+          description: "Medieval church, Altar of Heaven.",
+          relics: []
+        },
+        {
+          name: "Piazza Navona",
+          description: "Famous for its three baroque fountains and vibrant atmosphere.",
+          relics: []
+        },
+        {
+          name: "Piazza di Spagna",
+          description: "The Spanish Steps (Trinità dei Monti), panoramic view.",
+          relics: []
+        },
+        {
+          name: "Trevi Fountain",
+          description: "The most famous baroque fountain in the world.",
+          relics: []
+        },
+        {
+          name: "Pantheon",
+          description: "Ancient temple, now a church; the oldest continuously used building.",
+          relics: []
+        },
+        {
+          name: "Piazza del Popolo",
+          description: "Famous square, the northern gate of Rome.",
+          relics: []
+        }
+      ]
+    }
+  ],
+
     // Contact
     'contact.title': 'Contact and Reservations',
     'contact.description': 'For information and reservations, contact us Monday - Friday: 9:00 - 19:00',
@@ -291,6 +803,255 @@ const translations = {
     'itinerary.transport.options': 'Opzioni di Trasporto:',
     'itinerary.transport.program': 'Programma:',
     'itinerary.transport.info': 'Duration about 8 hours (it greatly depends on your energy, how many photos you take, crowds, the number of pilgrims who arrived before us, traffic, opening hours of tourist attractions, etc).',
+    'itinerary.relics': 'Reliquie',
+
+    'itinerary.daysData': [
+    {
+      title: "Primo Giorno a Roma",
+      highlights: [
+        "Santa Croce in Gerusalemme",
+        "Basilica San Giovanni",
+        "Scala Santa",
+        "Santa Maria Maggiore"
+      ],
+      locations: [
+        {
+          name: "Chiesa Santa Croce in Gerusalemme",
+          description: "La prima delle 7 Basiliche. Costruita vicino alla residenza di Sant’Elena. Reliquie della Passione del Signore.",
+          relics: [
+            "Un pezzo della Croce del Salvatore",
+            "Un chiodo che ha trafitto Cristo",
+            "Il dito dell’Apostolo Tommaso"
+          ]
+        },
+        {
+          name: "Basilica San Giovanni",
+          description: "La seconda delle 7 più importanti. La più antica di Roma (318), cattedrale di Roma.",
+          relics: [
+            "Giovanni Battista e l’Evangelista"
+          ]
+        },
+        {
+          name: "Scala Santa",
+          description: "La scala (28 gradini) che il Salvatore salì nel Pretorio davanti a Pilato.",
+          relics: [
+            "Portata per ordine di Sant’Elena nell’anno 326"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Secondo Giorno a Roma",
+      highlights: [
+        "Basilica San Paolo",
+        "Santa Maria degli Angeli",
+        "Santa Prassede",
+        "Colosseo"
+      ],
+      locations: [
+        {
+          name: "Basilica San Paolo Fuori le Mura",
+          description: "Tomba dell’Apostolo Paolo. La quarta delle 7 Basiliche più importanti.",
+          relics: [
+            "Apostolo Paolo – il più influente missionario cristiano"
+          ]
+        },
+        {
+          name: "Chiesa Santa Prassede",
+          description: "Luogo del martirio delle sorelle Pudenziana e Prassede.",
+          relics: [
+            "Reliquie di 2300 martiri (13 Papi)",
+            "La colonna a cui fu legato il Salvatore"
+          ]
+        },
+        {
+          name: "Colosseo",
+          description: "Anfiteatro Flavio, luogo santo dove morirono migliaia di cristiani.",
+          relics: [
+            "Costruzione antica meglio conservata (72–80 d.C.)"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Terzo Giorno a Roma",
+      highlights: [
+        "Via Appia Antica",
+        "Chiesa San Sebastiano",
+        "Catacombe",
+        "Isola Tiberina"
+      ],
+      locations: [
+        {
+          name: "Chiesa San Sebastiano",
+          description: "La quinta delle 7 principali. Chiesa costantiniana del IV secolo.",
+          relics: [
+            "Reliquie dei Santi Pietro e Paolo",
+            "Pietra con l’impronta dei piedi del Salvatore"
+          ]
+        },
+        {
+          name: "Catacombe San Sebastiano",
+          description: "Luogo dove furono sepolti i primi papi. A Roma ci sono oltre 60 km di catacombe.",
+          relics: [
+            "I primi vescovi cristiani"
+          ]
+        }
+      ]
+    },
+    {
+      title: "Quarto Giorno a Roma",
+      highlights: [
+        "San Lorenzo fuori le Mura",
+        "Chiesa Sacro Cuore di Gesù",
+        "Sinagoga Ebraica",
+        "Santa Maria in Trastevere",
+        "San Francesco a Ripa",
+        "Colle Aventino"
+      ],
+      locations: [
+        {
+          name: "Chiesa San Lorenzo fuori le Mura",
+          description: "La sesta delle 7 Basiliche. Corpo dell’Arcidiacono Lorenzo e di Stefano il Protomartire, tombe di 5 papi.",
+          relics: [
+            "Reliquie di San Lorenzo",
+            "Reliquie di Santo Stefano Protomartire",
+            "Tombe dei papi"
+          ]
+        },
+        {
+          name: "Chiesa Sacro Cuore di Gesù",
+          description: "Chiesa gotica dedicata al Sacro Cuore di Gesù.",
+          relics: []
+        },
+        {
+          name: "Sinagoga Ebraica (esterno)",
+          description: "Impressionante sinagoga di Roma, costruita nel 1900.",
+          relics: []
+        },
+        {
+          name: "Basilica Santa Maria in Trastevere",
+          description: "La prima chiesa dedicata alla Madonna, IV secolo, mosaico bizantino.",
+          relics: []
+        },
+        {
+          name: "Chiesa San Francesco a Ripa (Trastevere)",
+          description: "Chiesa francescana fondata nel 1209.",
+          relics: []
+        },
+        {
+          name: "Colle Aventino",
+          description: "Panorama su Roma, chiese di Sant’Alessio e Santa Sabina.",
+          relics: []
+        }
+      ]
+    },
+    {
+      title: "Quinto Giorno a Roma",
+      highlights: [
+        "Vaticano",
+        "Castel Sant'Angelo",
+        "Colle Pincio",
+        "Catacombe Santa Priscilla",
+        "Laghetto EUR"
+      ],
+      locations: [
+        {
+          name: "Vaticano – Basilica San Pietro",
+          description: "La settima Basilica. Custodisce le reliquie di San Pietro e altri santi. Cupola progettata da Michelangelo.",
+          relics: [
+            "Reliquie di San Pietro",
+            "Reliquie degli Apostoli Simone e Giuda",
+            "Reliquie di San Gregorio di Nazianzo"
+          ]
+        },
+        {
+          name: "Castel Sant'Angelo",
+          description: "Ex mausoleo imperiale, oggi museo. Collegato al Vaticano tramite il Passetto.",
+          relics: []
+        },
+        {
+          name: "Colle Pincio e Gianicolo",
+          description: "Vista panoramica su Roma.",
+          relics: []
+        },
+        {
+          name: "Catacombe Santa Priscilla",
+          description: "Catacombe del II–V secolo, con l’icona più antica della Madonna.",
+          relics: [
+            "Icona della Madonna (II secolo)"
+          ]
+        },
+        {
+          name: "Laghetto EUR",
+          description: "Zona moderna, lago artificiale.",
+          relics: []
+        }
+      ]
+    },
+    {
+      title: "Sesto Giorno a Roma",
+      highlights: [
+        "Colonna di Traiano",
+        "Foro Romano",
+        "Monumento Vittoriano",
+        "Santa Maria Aracoeli",
+        "Piazza Navona",
+        "Piazza di Spagna",
+        "Fontana di Trevi",
+        "Pantheon",
+        "Piazza del Popolo"
+      ],
+      locations: [
+        {
+          name: "Colonna di Traiano",
+          description: "Colonna di Traiano, 113 d.C., descrive la conquista della Dacia.",
+          relics: []
+        },
+        {
+          name: "Foro Romano",
+          description: "Centro della vita politica e religiosa dell’antica Roma.",
+          relics: []
+        },
+        {
+          name: "Monumento Vittoriano (Altare della Patria)",
+          description: "Imponente monumento, costruito tra il 1885 e il 1935.",
+          relics: []
+        },
+        {
+          name: "Chiesa Santa Maria in Aracoeli",
+          description: "Chiesa medievale, Altare del Cielo.",
+          relics: []
+        },
+        {
+          name: "Piazza Navona",
+          description: "Celebre per le tre fontane barocche e l’atmosfera vivace.",
+          relics: []
+        },
+        {
+          name: "Piazza di Spagna",
+          description: "La scalinata di Trinità dei Monti, vista panoramica.",
+          relics: []
+        },
+        {
+          name: "Fontana di Trevi",
+          description: "La più famosa fontana barocca del mondo.",
+          relics: []
+        },
+        {
+          name: "Pantheon",
+          description: "Tempio antico, oggi chiesa; l’edificio più antico ancora in uso continuo.",
+          relics: []
+        },
+        {
+          name: "Piazza del Popolo",
+          description: "Piazza famosa, la porta nord di Roma.",
+          relics: []
+        }
+      ]
+    }
+  ],
+
 
     // Contact
     'contact.title': 'Contatto e Prenotazioni',
@@ -305,6 +1066,7 @@ const translations = {
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'Vi aspettiamo per essere pellegrini insieme verso la salvezza!',
     
+    // Sorin
     'sorin.university': 'Laureato presso la Facoltà di Teologia Ortodossa "Giustiniano il Patriarca" di Bucarest, attualmente studente magistrale',
     'sorin.experience': 'Ottima conoscenza dell’Italia, con residenza ininterrotta nella città di Roma da 29 anni',
 
