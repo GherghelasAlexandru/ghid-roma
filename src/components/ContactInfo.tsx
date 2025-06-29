@@ -91,52 +91,68 @@ export const ContactInfo = () => {
             </Card>
           </div>
 
-          {/* Society Info and CTA */}
-          <div className="space-y-8">
-            <Card className="border-roman-stone/20 shadow-lg">
-              <CardHeader className="bg-roman-gold text-white">
-                <CardTitle className="font-playfair text-2xl text-center">
-                  ROMA = AMOR
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-8 text-center">
-                <div className="mb-8">
-                  <p className="text-lg text-roman-deep/80 leading-relaxed">
-                    {t('contact.essence')}
-                  </p>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="bg-roman-marble rounded-lg p-6">
-                    <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-4">
-                      {t('contact.services')}
-                    </h4>
-                    <ul className="text-center space-y-2 text-roman-deep/80">
-                      <li>• Ghid turistic specializat</li>
-                      <li>• Transport de lux (Tesla/Microbuz)</li>
-                      <li>• Preluare de la hotel</li>
-                      <li>• Program flexibil de 8 ore</li>
-                      <li>• Asistență la Aeroport</li>
-                      <li>• Rezervări hoteluri la preț bun</li>
-                    </ul>
-                  </div>
-                </div>
+          {/* Cards Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Card 1 */}
+            <Card className="bg-white rounded-2xl shadow-md hover:shadow-lg border-0 flex flex-col h-full transition-all">
+              <CardContent className="p-8 flex flex-col items-center text-center h-full mt-4">
+                <svg className="w-9 h-9 mb-4 text-roman-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  {/* Lightbulb/Idea icon, or replace with a Lucide icon if you want */}
+                  <path d="M12 2a7 7 0 017 7c0 3.87-3.13 7-7 7s-7-3.13-7-7a7 7 0 017-7zm0 15v4m-3-4h6" />
+                </svg>
+                <p className="text-base text-roman-deep/80 leading-relaxed">
+                  {t('contact.essence')}
+                </p>
               </CardContent>
             </Card>
-
-            <Card className="border-roman-stone/20 shadow-lg bg-roman-deep text-white">
-              <CardContent className="p-8 text-center">
-                <h3 className="font-playfair text-2xl font-bold mb-4">
+            {/* Card 2 */}
+            <Card className="bg-white rounded-2xl shadow-md hover:shadow-lg border-0 flex flex-col h-full transition-all">
+              <CardContent className="p-8 flex flex-col items-center text-center h-full">
+                <svg className="w-9 h-9 mb-4 text-roman-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path d="M12 17.3l6.18 3.7-1.64-7.03L21 9.24l-7.19-.61L12 2 10.19 8.63 3 9.24l5.46 4.73L6.82 21z"/>
+                </svg>
+                <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
                   {t('contact.veni')}
                 </h3>
-                <p className="text-lg mb-6">
-                   {t('contact.pilgrims')}
+                <p className="text-base text-roman-deep/80 mb-2">
+                  {t('contact.pilgrims')}
                 </p>
-                <div className="space-y-2 text-roman-stone">
+                <div className="space-y-1 text-[15px] text-roman-gold font-playfair italic">
                   <p>Iubi-Te-Voi Doamne!</p>
                   <p>Agapiso Se Kyrie!</p>
                   <p>I Will LOVE Thee O Lord!</p>
                 </div>
+              </CardContent>
+            </Card>
+            {/* Card 3 */}
+            <Card className="bg-white rounded-2xl shadow-md hover:shadow-lg border-0 flex flex-col h-full transition-all">
+              <CardContent className="p-8 flex flex-col items-center text-center h-full">
+                <svg className="w-9 h-9 mb-4 text-roman-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  {/* Example: Heart icon */}
+                  <path d="M12 21C12 21 4 13.5 4 8.5C4 5.74 6.24 3.5 9 3.5C10.66 3.5 12 4.84 12 6.5C12 4.84 13.34 3.5 15 3.5C17.76 3.5 20 5.74 20 8.5C20 13.5 12 21 12 21Z"/>
+                </svg>
+                <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                  {t('contact.spiritual.title')}
+                </h3>
+                <p className="text-base text-roman-deep/80 leading-relaxed">
+                 {t('contact.spiritual.desc')}
+                </p>
+              </CardContent>
+            </Card>
+            {/* Card 4 */}
+            <Card className="bg-white rounded-2xl shadow-md hover:shadow-lg border-0 flex flex-col h-full transition-all">
+              <CardContent className="p-8 flex flex-col items-center text-center h-full">
+                <svg className="w-9 h-9 mb-4 text-roman-gold" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  {/* Example: Globe icon */}
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+                </svg>
+                <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                 {t('contact.culture.title')}
+                </h3>
+                <p className="text-base text-roman-deep/80 leading-relaxed">
+                  {t('contact.culture.desc')}
+                </p>
               </CardContent>
             </Card>
           </div>

@@ -401,6 +401,11 @@ const translations = {
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'Vă așteptăm să fim împreună pelerini spre mântuire!',
 
+    'contact.spiritual.title': 'Moștenire Spirituală',
+    'contact.spiritual.desc': 'Descoperă moștenirea spirituală și culturală care te așteaptă la Roma.',
+    'contact.culture.title': 'Întâlniri Culturale',
+    'contact.culture.desc': 'Experimentează punctul de întâlnire dintre artă, credință și istorie.',
+
     'contact.services.list': [
       'Ghid turistic specializat',
       'Transport de lux (Tesla/Microbuz)',
@@ -761,6 +766,12 @@ const translations = {
     'contact.book': 'Book Pilgrimage Now',
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'We await you to be pilgrims together towards salvation!',
+
+    'contact.spiritual.title': 'Spiritual Heritage',
+    'contant.spiritual.desc': 'Discover the spiritual and cultural legacy that awaits in Rome.',
+    'contact.culture.title': 'Cultural Encounters',
+    'contact.culture.desc': 'Experience the meeting point of art, faith, and history.',
+
 
     'contact.services.list': [
       'Specialized tourist guide',
@@ -1125,6 +1136,12 @@ const translations = {
     'contact.book': 'Prenota Pellegrinaggio Ora',
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'Vi aspettiamo per essere pellegrini insieme verso la salvezza!',
+
+    'contact.spiritual.title': 'Eredità Spirituale',
+    'contact.spiritual.desc': 'Scopri l’eredità spirituale e culturale che ti aspetta a Roma.',
+    'contact.culture.title': 'Incontri Culturali',
+    'contact.culture.desc': 'Vivi il punto d’incontro tra arte, fede e storia.',
+
 
     'contact.services.list': [
       'Guida turistica specializzata',
