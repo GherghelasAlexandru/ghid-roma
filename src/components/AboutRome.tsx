@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Church, Crown, Landmark,   UserRoundSearch, Car, Hotel, Clock, Plane, BadgePercent } from "lucide-react";
+import { Church, Crown, Landmark,   UserRoundSearch, Car, Hotel, Clock, Plane, MapPin, BadgePercent } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const servicesCards = [
@@ -163,7 +163,7 @@ export const AboutRome = () => {
             {t('contact.offer')}
           </p>
         </div>
-        
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
               {servicesCards.map(({ icon: Icon, key, color }, idx) => (
                 <Card
@@ -183,32 +183,44 @@ export const AboutRome = () => {
         </div>
 
         {/* Transport Info */}
-        <div className="bg-white rounded-lg p-8 shadow-lg mt-12">
-          <h3 className="font-playfair text-2xl font-bold text-roman-deep mb-6 text-center">
-            {t('itinerary.transport.title')}
-          </h3>
+        <div className="bg-white rounded-xl p-8 shadow-lg mt-12">
+          <div className="flex flex-col items-center mb-8">
+            <Car className="w-10 h-10 text-roman-gold mb-2" />
+            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-roman-deep text-center">
+              {t('itinerary.transport.title')}
+            </h3>
+            <div className="w-24 h-1 bg-roman-gold/70 rounded-full mt-2 mb-0"></div>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.options')}</h4>
-              <ul className="space-y-2 text-roman-deep/80">
-                {options.map((item, idx) => (
-                  <li key={idx} dangerouslySetInnerHTML={{ __html: '• ' + item }} />
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.program')}</h4>
-              <ul className="space-y-2 text-roman-deep/80">
-                {program.map((item, idx) => (
-                  <li key={idx} dangerouslySetInnerHTML={{ __html: '• ' + item }} />
-                ))}
-              </ul>
+            {/* Transport Options as Cards */}
+            <div className="flex flex-col gap-4">
+              <h4 className="font-semibold text-roman-deep mb-2">{t('itinerary.transport.options')}</h4>
+              {options.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 bg-roman-marble/60 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
+                  <span className="text-base text-roman-deep/90 leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
+                </div>
+              ))}
             </div>
 
+            {/* Program as Cards */}
+            <div className="flex flex-col gap-4">
+              <h4 className="font-semibold text-roman-deep mb-2">{t('itinerary.transport.program')}</h4>
+              {program.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3 bg-roman-marble/60 rounded-lg p-4 shadow-sm hover:shadow-md transition-all">
+                  <span className="text-base text-roman-deep/90 leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
+                </div>
+              ))}
+            </div>
           </div>
-          <p className="text-lg text-roman-deep/80  mx-auto px-4 mt-8 text-center">
-             {t('itinerary.transport.info')}
-          </p>
+
+          <div className="flex justify-center mt-8">
+            <div className="bg-roman-marble/60 rounded-lg px-6 py-4 shadow-sm text-center">
+              <span className="text-base md:text-lg text-roman-deep/80">
+                {t('itinerary.transport.info')}
+              </span>
+            </div>
+          </div>
         </div>
            
       </div>
