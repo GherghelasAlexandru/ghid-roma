@@ -18,6 +18,7 @@ export interface ItineraryDay {
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  ta: (key: string) => string | string[];
   t: (key: string) => string;
   getItineraryDays: () => ItineraryDay[];
 }
@@ -47,8 +48,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   return translations[language]['itinerary.daysData'] || [];
 };
 
+// Helper for string or array (useful for lists)
+const ta = (key: string): string | string[] => {
+  return translations[language][key] || [];
+};
+
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, getItineraryDays }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, ta, getItineraryDays }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -87,14 +94,14 @@ const translations = {
     'about.met.title': 'Orașul Sfânt',
     'about.visit.title': 'Ca buni creștini se vor vizita',
     'about.met.list': [
-      'Orașul unde s-a întâlnit Apostolul Petru ( +64 dHr Roma)cu Mântuitorul',
+      'Apostolul Petru (+64 dHr Roma)',
       'Unde a murit Sf. Petru răstignit pe o Cruce cu capul în jos',
-      'Locul pe unde a călătorit Apostolul Pavel (+67dHr Roma)și unde a fost ucis pentru credința sa',
-      'Unde a scris Apostolul Luca 9 - 93 dHr , medic , pictor ( Evanghelia și Faptele Apostolilor)',
+      'Apostolul Pavel (+67 dHr Roma) și unde a fost ucis pentru credința sa',
+      'Unde a scris Apostolul Luca (medic, pictor)',
       'La ROMA sunt peste 900 de Biserici',
       'Capitala unde avem Moaște a tuturor Apostolilor și ale miilor de sfinți',
       'Pământ creștin udat cu sângele martirilor',
-      'Și nu în ultimul rând cultură și artă ( 80% din patrimoniul mondial este în Italia). Tot ceea ce se va vizita este Patrimoniu al umanității'
+      'Și nu în ultimul rând cultură și artă (80% din patrimoniul mondial este în Italia). Tot ceea ce se va vizita este Patrimoniu al umanității'
     ],
     'about.visit.list': [
       'Catacombele - locul de închinare și cimitirul  primilor creștini. În terenul Romei sunt 60 de Catacombe diverse , peste 170km lungime , cu peste 750.000 de morminte.  Actual sunt deschise publicului doar 5 Catacombe',
@@ -102,8 +109,8 @@ const translations = {
       'COLOSEUL (72dHr-80dHr) locul Sfânt unde au murit mii de creștini , uciși în lupte cu gladiatori sau mâncați de fiare sălbatice',
       'PANTEONUL ( 27 ÎHr) 112-124. Ex: Templu al mai multor zeități , actual Biserică creștină, singura clădire din lume cu o gaură în tavan cu diametrul de 9 metri , care din sediu păgân devine clădire religioasă în anul 312',
       'VATICANUL ( 64 D Hr ) 1506-1626 , cel mai mic stat din lume ... unde este corpul patronului orașului Sfântul Petru',
-    ],  
-    
+    ],
+  
     // Itinerary
     'itinerary.title': 'Itinerarul Pelerinajului',
     'itinerary.description': 'Un program complet de 6 zile prin cele mai importante locuri sfinte din Roma, cu ghid specializat și transport inclus.',
@@ -121,6 +128,18 @@ const translations = {
     'itinerary.transport.program': 'Program:',
     'itinerary.transport.info': 'Durata circa 8 ore (depinde mult de cât de voioși sunteți, de câte fotografii veți face, de îmbulzeală, de numărul de pelerini ajunși înaintea noastră, de trafic, de orarul deschiderii obiectivelor turistice etc).',
     'itinerary.relics': 'Relicve și Moaște',
+
+    'itinerary.transport.options.list': [
+      '<strong>4 persoane:</strong> Tesla Model S (NT-78-VIS)',
+      '<strong>8 persoane:</strong> Microbuz VAN Opel Vivaro (NT-27-VIS)',
+      '<strong>1 persoană:</strong> Harley Davidson Fortyeiht 1200 XL',
+    ],
+    'itinerary.transport.program.list': [
+      '<strong>Plecare:</strong> ora 9:00 din hotel',
+      '<strong>Durata:</strong> circa 8 ore pe zi',
+      '<strong>Întoarcere:</strong> la locul de cazare',
+      '<strong>Pentru slujitorii altarului:</strong> GRATIS',
+    ],
 
     'itinerary.daysData': [
       {
@@ -382,6 +401,15 @@ const translations = {
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'Vă așteptăm să fim împreună pelerini spre mântuire!',
 
+    'contact.services.list': [
+      'Ghid turistic specializat',
+      'Transport de lux (Tesla/Microbuz)',
+      'Preluare de la hotel',
+      'Program flexibil de 8 ore',
+      'Asistență la Aeroport',
+      'Rezervări hoteluri la preț bun'
+    ],
+
     // Sorin
     'sorin.university': 'Absolvent al Facultății de Teologie Ortodoxă "Iustinian Patriarhul" din București, actual masterand',
     'sorin.experience': 'Bun cunoscător al Italiei, cu reședința neîntreruptă în orașul Roma de 29 de ani',
@@ -427,24 +455,23 @@ const translations = {
     'about.met.title': 'The Holy City',
     'about.visit.title': 'As good Christians, you will visit',
     'about.met.list': [
-      'The city where Apostle Peter (+64 AD, Rome) met the Savior',
-      'Where Saint Peter died, crucified upside down',
-      'The places Apostle Paul (+67 AD, Rome) traveled and where he was killed for his faith',
-      'Where Apostle Luke (9–93 AD), physician and painter, wrote the Gospel and Acts of the Apostles',
-      'There are over 900 churches in ROME',
+      'Apostle Peter (+64 AD, Rome)',
+      'Where St. Peter died, crucified upside down',
+      'Apostle Paul (+67 AD, Rome) and where he was killed for his faith',
+      'Where Apostle Luke wrote (physician, painter)',
+      'In ROME there are over 900 churches',
       'The capital where we have relics of all the Apostles and thousands of saints',
       'Christian land watered with the blood of martyrs',
-      'And not least, culture and art (80% of the world’s heritage is in Italy). Everything you visit is World Heritage'
+      'And last but not least, culture and art (80% of the world’s heritage is in Italy). Everything visited is World Heritage'
     ],
     'about.visit.list': [
-      'The Catacombs – the place of worship and burial of the first Christians. There are 60 different catacombs in Rome, over 170 km long, with more than 750,000 tombs. Currently, only 5 Catacombs are open to the public.',
-      'The 7 ROMAN BASILICAS (built immediately after the Edict of Emperor Constantine from Milan in 313 AD, granting freedom to Christian worship) – there are over 900 churches in ROME.',
-      'THE COLOSSEUM (72–80 AD), the holy place where thousands of Christians died, killed in gladiator fights or eaten by wild beasts.',
-      'THE PANTHEON (27 BC / 112–124 AD): originally a temple for several deities, now a Christian church, the only building in the world with a 9-meter diameter hole in the ceiling, which became a religious building in 312 AD.',
-      'THE VATICAN (64 AD / 1506–1626), the smallest state in the world... where the body of the patron of the city, Saint Peter, is found.'
+      'The Catacombs – the place of worship and burial of the first Christians. There are 60 different Catacombs in Rome, over 170km long, with over 750,000 tombs. Currently, only 5 Catacombs are open to the public.',
+      'The 7 ROMAN BASILICAS (Built immediately after the Edict of Constantine from Milan in 313, granting freedom to Christian worship) – in ROME there are over 900 churches.',
+      'THE COLOSSEUM (72–80 AD) – the holy place where thousands of Christians died, killed in gladiator fights or eaten by wild beasts.',
+      'THE PANTHEON (27 BC / 112–124 AD): a temple of several deities, now a Christian church, the only building in the world with a 9-meter diameter hole in the ceiling, which from a pagan site became a religious building in 312.',
+      'THE VATICAN (64 AD / 1506–1626), the smallest state in the world... where the body of the city’s patron, Saint Peter, is kept.'
     ],
 
-    
     // Itinerary
     'itinerary.title': 'Pilgrimage Itinerary',
     'itinerary.description': 'A complete 6-day program through the most important holy places in Rome, with specialized guide and transport included.',
@@ -462,6 +489,18 @@ const translations = {
     'itinerary.transport.program': 'Program:',
     'itinerary.transport.info': 'Duration about 8 hours (it greatly depends on your energy, how many photos you take, crowds, the number of pilgrims who arrived before us, traffic, opening hours of tourist attractions, etc).',
     'itinerary.relics': 'Relics',
+
+    'itinerary.transport.options.list': [
+      '<strong>4 people:</strong> Tesla Model S (NT-78-VIS)',
+      '<strong>8 people:</strong> Opel Vivaro VAN Minibus (NT-27-VIS)',
+      '<strong>1 person:</strong> Harley Davidson Fortyeight 1200 XL',
+    ],
+    'itinerary.transport.program.list': [
+      '<strong>Departure:</strong> 9:00 AM from hotel',
+      '<strong>Duration:</strong> about 8 hours per day',
+      '<strong>Return:</strong> back to accommodation',
+      '<strong>For altar servers:</strong> FREE',
+    ],
 
     'itinerary.daysData': [
     {
@@ -722,6 +761,15 @@ const translations = {
     'contact.book': 'Book Pilgrimage Now',
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'We await you to be pilgrims together towards salvation!',
+
+    'contact.services.list': [
+      'Specialized tourist guide',
+      'Luxury transport (Tesla/Minivan)',
+      'Hotel pickup',
+      'Flexible 8-hour schedule',
+      'Airport assistance',
+      'Good price hotel bookings'
+    ],
     
     // Sorin
     'sorin.university': 'Graduate of the "Justinian the Patriarch" Faculty of Orthodox Theology in Bucharest, currently a master’s student',
@@ -804,6 +852,18 @@ const translations = {
     'itinerary.transport.program': 'Programma:',
     'itinerary.transport.info': 'Duration about 8 hours (it greatly depends on your energy, how many photos you take, crowds, the number of pilgrims who arrived before us, traffic, opening hours of tourist attractions, etc).',
     'itinerary.relics': 'Reliquie',
+
+   'itinerary.transport.options.list': [
+      '<strong>4 persone:</strong> Tesla Model S (NT-78-VIS)',
+      '<strong>8 persone:</strong> Minibus VAN Opel Vivaro (NT-27-VIS)',
+      '<strong>1 persona:</strong> Harley Davidson Fortyeight 1200 XL',
+    ],
+    'itinerary.transport.program.list': [
+      '<strong>Partenza:</strong> ore 9:00 dall’hotel',
+      '<strong>Durata:</strong> circa 8 ore al giorno',
+      '<strong>Rientro:</strong> presso l’alloggio',
+      '<strong>Per i servitori dell’altare:</strong> GRATIS',
+    ],
 
     'itinerary.daysData': [
     {
@@ -1065,7 +1125,16 @@ const translations = {
     'contact.book': 'Prenota Pellegrinaggio Ora',
     'contact.veni': 'VENI VIDI VICI!',
     'contact.pilgrims': 'Vi aspettiamo per essere pellegrini insieme verso la salvezza!',
-    
+
+    'contact.services.list': [
+      'Guida turistica specializzata',
+      'Trasporto di lusso (Tesla/Minivan)',
+      'Prelievo dall’hotel',
+      'Programma flessibile di 8 ore',
+      'Assistenza in aeroporto',
+      'Prenotazioni hotel a buon prezzo'
+    ],
+
     // Sorin
     'sorin.university': 'Laureato presso la Facoltà di Teologia Ortodossa "Giustiniano il Patriarca" di Bucarest, attualmente studente magistrale',
     'sorin.experience': 'Ottima conoscenza dell’Italia, con residenza ininterrotta nella città di Roma da 29 anni',

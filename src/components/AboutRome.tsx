@@ -1,12 +1,53 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { Church, Heart, Crown, Scroll, Landmark } from "lucide-react";
+import { Church, Crown, Landmark,   UserRoundSearch, Car, Hotel, Clock, Plane, BadgePercent } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "./ui/button";
+
+const servicesCards = [
+  {
+    icon: UserRoundSearch,
+    key: 0, 
+    color: "text-roman-gold",
+  },
+  {
+    icon: Car,
+    key: 1,
+    color: "text-roman-gold",
+  },
+  {
+    icon: Hotel,
+    key: 2,
+    color: "text-roman-gold",
+  },
+  {
+    icon: Clock,
+    key: 3,
+    color: "text-roman-gold",
+  },
+  {
+    icon: Plane,
+    key: 4,
+    color: "text-roman-gold",
+  },
+  {
+    icon: BadgePercent,
+    key: 5,
+    color: "text-roman-gold",
+  },
+];
 
 export const AboutRome = () => {
-  const { t } = useLanguage();
+  const { t, ta } = useLanguage();
+
+  const optionsRaw = ta('itinerary.transport.options.list');
+  const programRaw = ta('itinerary.transport.program.list');
+  const servicesRaw = ta('contact.services.list');
+
+  // Only use map if it's actually an array
+  const options = Array.isArray(optionsRaw) ? optionsRaw : [];
+  const program = Array.isArray(programRaw) ? programRaw : [];
+  const services = Array.isArray(servicesRaw) ? servicesRaw : [];
 
   return (
     <section id="despre" className="py-20 bg-roman-marble">
@@ -83,9 +124,6 @@ export const AboutRome = () => {
         </div>
 
         <div className="bg-white rounded-lg p-8 shadow-lg">
-          {/* <h3 className="font-playfair text-2xl font-bold text-roman-deep mb-6 text-center">
-            {t('about.holy.title')}
-          </h3> */}
           <CardHeader className="bg-roman-gold text-white">
                 <CardTitle className="font-playfair text-3xl text-center">
                   {t('about.holy.title')}
@@ -97,63 +135,54 @@ export const AboutRome = () => {
                 {t('about.met.title')}
               </h4>
               <ul className="space-y-2 text-roman-deep">
-                <li>• Apostolul Petru (+64 dHr Roma)</li>
-                <li>• Unde a murit Sf. Petru răstignit pe o Cruce cu capul în jos</li>
-                <li>• Apostolul Pavel (+67 dHr Roma) și unde a fost ucis pentru credința sa</li>
-                <li>• Unde a scris Apostolul Luca (medic, pictor)</li>
-              </ul>
+              {Array.isArray(ta('about.met.list')) &&
+                (ta('about.met.list') as string[]).map((item, idx) => (
+                  <li key={idx}>• {item}</li>
+                ))}
+            </ul>
             </div>
+
             <div>
               <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-4">
                 {t('about.visit.title')}
               </h4>
               <ul className="space-y-2 text-roman-deep">
-                <li>• Catacombele - locul de închinare al primilor creștini</li>
-                <li>• Cele 7 BAZILICI ROMANE</li>
-                <li>• Peste 900 de Biserici</li>
-                <li>• COLOSEUL - locul Sfânt unde au murit mii de creștini</li>
-                <li>• PANTEONUL și VATICANUL</li>
+                  {Array.isArray(ta('about.visit.list')) &&
+                    (ta('about.visit.list') as string[]).map((item, idx) => (
+                      <li key={idx}>• {item}</li>
+                    ))}
               </ul>
             </div>
           </div>
         </div>
         <div className="bg-white rounded-lg p-8 shadow-lg mt-12">
-              <CardHeader className="bg-roman-gold text-white">
-                <CardTitle className="font-playfair text-3xl text-center">
-                  {t('contact.society')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-8 text-center">
-                <div className="mb-8">
-                  <p className="text-lg text-roman-deep/80 leading-relaxed">
-                    {t('contact.offer')}
-                  </p>
-                </div>
-
-                {/* <div className="mb-8">
-                  <p className="text-lg text-roman-deep/80 leading-relaxed">
-                    {t('contact.essence')}
-                  </p>
-                </div> */}
-                
-                <div className="space-y-6">
-                  <div className="bg-roman-marble rounded-lg p-6">
-                    <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-4">
-                      {t('contact.services')}
-                    </h4>
-                    <ul className="text-center space-y-2 text-roman-deep/80">
-                      <li>• Ghid turistic specializat</li>
-                      <li>• Transport de lux (Tesla/Microbuz)</li>
-                      <li>• Preluare de la hotel</li>
-                      <li>• Program flexibil de 8 ore</li>
-                      <li>• Asistență la Aeroport</li>
-                      <li>• Rezervări hoteluri la preț bun</li>
-                    </ul>
+          <CardContent className="p-8">
+        <div className="mx-auto bg-roman-marble/70 rounded-xl border border-roman-gold/20 px-6 py-6 shadow text-roman-deep/90 mb-8 relative">
+          <UserRoundSearch className="w-8 h-8 text-roman-gold absolute -top-4 left-1/2 -translate-x-1/2 bg-white rounded-full p-1 shadow" />
+          <p className="italic font-playfair text-lg md:text-xl leading-relaxed text-center">
+            {t('contact.offer')}
+          </p>
+        </div>
+        
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+              {servicesCards.map(({ icon: Icon, key, color }, idx) => (
+                <Card
+                  key={idx}
+                  className="w-full h-full rounded-2xl bg-roman-marble shadow-md hover:shadow-xl border-0 flex flex-col items-center p-6 transition-all duration-200 hover:scale-105"
+                >
+                  <div className="mb-4 flex justify-center">
+                    <Icon className={`w-10 h-10 ${color}`} strokeWidth={2} />
                   </div>
-                </div>
-              </CardContent>
-          </div>
-            {/* Transport Info */}
+                  <div className="text-lg font-semibold text-roman-deep text-center leading-snug">
+                    {services[key]}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </CardContent>
+        </div>
+
+        {/* Transport Info */}
         <div className="bg-white rounded-lg p-8 shadow-lg mt-12">
           <h3 className="font-playfair text-2xl font-bold text-roman-deep mb-6 text-center">
             {t('itinerary.transport.title')}
@@ -162,26 +191,25 @@ export const AboutRome = () => {
             <div>
               <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.options')}</h4>
               <ul className="space-y-2 text-roman-deep/80">
-                <li>• <strong>4 persoane:</strong> Tesla Model S (NT-78-VIS)</li>
-                <li>• <strong>8 persoane:</strong> Microbuz VAN Opel Vivaro (NT-27-VIS)</li>
-                <li>• <strong>1 persoană:</strong> Harley Davidson Fortyeiht 1200 XL</li>
+                {options.map((item, idx) => (
+                  <li key={idx} dangerouslySetInnerHTML={{ __html: '• ' + item }} />
+                ))}
               </ul>
             </div>
             <div>
               <h4 className="font-semibold text-roman-deep mb-4">{t('itinerary.transport.program')}</h4>
               <ul className="space-y-2 text-roman-deep/80">
-                <li>• <strong>Plecare:</strong> ora 9:00 din hotel</li>
-                <li>• <strong>Durata:</strong> circa 8 ore pe zi</li>
-                <li>• <strong>Întoarcere:</strong> la locul de cazare</li>
-                <li>• <strong>Pentru slujitorii altarului:</strong> GRATIS</li>
+                {program.map((item, idx) => (
+                  <li key={idx} dangerouslySetInnerHTML={{ __html: '• ' + item }} />
+                ))}
               </ul>
             </div>
-            
+
           </div>
-           <p className="text-lg text-roman-deep/80  mx-auto px-4 mt-8 text-center">
+          <p className="text-lg text-roman-deep/80  mx-auto px-4 mt-8 text-center">
              {t('itinerary.transport.info')}
-            </p>
-          </div>
+          </p>
+        </div>
            
       </div>
     </section>
