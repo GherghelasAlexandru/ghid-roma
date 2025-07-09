@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Menu, X, Church } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,21 +21,30 @@ export const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#despre" className="text-roman-deep hover:text-roman-gold transition-colors">
-              {t('nav.about')}
+            <a
+              href="#despre"
+              className="text-roman-deep hover:text-roman-gold transition-colors"
+            >
+              {t("nav.about")}
             </a>
-            <a href="#itinerariu" className="text-roman-deep hover:text-roman-gold transition-colors">
-              {t('nav.itinerary')}
+            <a
+              href="#itinerariu"
+              className="text-roman-deep hover:text-roman-gold transition-colors"
+            >
+              {t("nav.itinerary")}
             </a>
-            <a href="#contact" className="text-roman-deep hover:text-roman-gold transition-colors">
-              {t('nav.contact')}
+            <a
+              href="#contact"
+              className="text-roman-deep hover:text-roman-gold transition-colors"
+            >
+              {t("nav.contact")}
             </a>
             <LanguageSwitcher />
-             <a
+            <a
               href="#contact"
               className="bg-roman-gold hover:bg-roman-terracotta text-white px-4 py-2 rounded font-medium transition-colors"
             >
-              {t('nav.book')}
+              {t("nav.book")}
             </a>
           </div>
 
@@ -48,7 +56,11 @@ export const Navigation = () => {
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -62,24 +74,24 @@ export const Navigation = () => {
                 className="block px-3 py-2 text-roman-deep hover:text-roman-gold transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {t('nav.about')}
+                {t("nav.about")}
               </a>
               <a
                 href="#itinerariu"
                 className="block px-3 py-2 text-roman-deep hover:text-roman-gold transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {t('nav.itinerary')}
+                {t("nav.itinerary")}
               </a>
               <a
                 href="#contact"
                 className="block px-3 py-2 text-roman-deep hover:text-roman-gold transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                {t('nav.contact')}
+                {t("nav.contact")}
               </a>
               <Button className="w-full mt-2 bg-roman-gold hover:bg-roman-terracotta text-white">
-                {t('nav.book')}
+                {t("nav.book")}
               </Button>
             </div>
           </div>
