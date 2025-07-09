@@ -16,46 +16,45 @@ export const Footer = () => {
               </span>
             </div>
             <p className="text-roman-stone leading-relaxed">
-              {t('footer.pilgrimage')} {t('footer.experience')}
+              {t("footer.pilgrimage")} {t("footer.experience")}
             </p>
           </div>
 
           <div>
             <h3 className="font-playfair text-xl font-semibold mb-4 text-roman-gold">
-              {t('footer.quick')}
+              {t("footer.quick")}
             </h3>
             <div className="space-y-2 text-roman-stone">
               <div className="flex items-center gap-4">
-                  <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
-                  <div>
-                    <p>IT: +39 347 521 7639</p>
-                  </div>
-              </div>
-               <div className="flex items-center gap-4">
-                  <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
-                  <div>
-                    <p>RO: +40 723 010 201</p>
-                  </div>
+                <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                <div>
+                  <p>IT: +39 347 521 7639</p>
+                </div>
               </div>
               <div className="flex items-center gap-4">
-                  <Mail className="h-5 w-5 text-roman-gold flex-shrink-0" />
-                  <div>
-                    <p>spascaru@gmail.com</p>
-                  </div>
+                <Phone className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                <div>
+                  <p>RO: +40 723 010 201</p>
+                </div>
               </div>
               <div className="flex items-center gap-4">
-                  <Clock className="h-5 w-5 text-roman-gold flex-shrink-0" />
-                  <div>
-                    <p>Luni-Vineri: 9:00-19:00</p>
-                  </div>
+                <Mail className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                <div>
+                  <p>spascaru@gmail.com</p>
+                </div>
               </div>
-             
+              <div className="flex items-center gap-4">
+                <Clock className="h-5 w-5 text-roman-gold flex-shrink-0" />
+                <div>
+                  <p>Luni-Vineri: 9:00-19:00</p>
+                </div>
+              </div>
             </div>
           </div>
 
           <div>
             <h3 className="font-playfair text-xl font-semibold mb-4 text-roman-gold">
-              {t('footer.holy')}
+              {t("footer.holy")}
             </h3>
             <div className="space-y-2 text-roman-stone">
               <p>• 7 Bazilici Romane</p>
@@ -69,8 +68,8 @@ export const Footer = () => {
 
         <div className="border-t border-roman-stone/20 mt-8 pt-8 text-center">
           <p className="text-roman-stone">
-            © 2024 Centro de Pelerinaje Roma - Societatea Ora et Labora. 
-            {t('footer.rights')}
+            © 2025 Centro de Pelerinaje Roma - Societatea Ora et Labora.
+            {t("footer.rights")}
           </p>
         </div>
       </div>

@@ -1,4 +1,3 @@
-
 import { Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,12 +12,12 @@ export const LanguageSwitcher = () => {
   const { language, setLanguage } = useLanguage();
 
   const languages = [
-    { code: 'ro' as Language, name: 'Română', flag: '🇷🇴' },
-    { code: 'en' as Language, name: 'English', flag: '🇬🇧' },
-    { code: 'it' as Language, name: 'Italiano', flag: '🇮🇹' },
+    { code: "ro" as Language, name: "Română", flag: "🇷🇴" },
+    { code: "en" as Language, name: "English", flag: "🇬🇧" },
+    { code: "it" as Language, name: "Italiano", flag: "🇮🇹" },
   ];
 
-  const currentLanguage = languages.find(lang => lang.code === language);
+  const currentLanguage = languages.find((lang) => lang.code === language);
 
   return (
     <DropdownMenu>
@@ -34,7 +33,9 @@ export const LanguageSwitcher = () => {
           <DropdownMenuItem
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`cursor-pointer ${language === lang.code ? 'bg-roman-stone/10' : ''}`}
+            className={`cursor-pointer ${
+              language === lang.code ? "bg-roman-stone/10" : ""
+            }`}
           >
             <span className="mr-2">{lang.flag}</span>
             {lang.name}

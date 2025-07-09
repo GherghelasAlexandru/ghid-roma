@@ -17,11 +17,11 @@ export const Itinerary = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-roman-deep mb-6">
-            {t('itinerary.title')}
+            {t("itinerary.title")}
           </h2>
           <div className="w-24 h-1 bg-roman-gold mx-auto mb-8"></div>
           <p className="text-lg text-roman-deep/80 max-w-3xl mx-auto">
-            {t('itinerary.description')}
+            {t("itinerary.description")}
           </p>
         </div>
 
@@ -30,32 +30,42 @@ export const Itinerary = () => {
           <Card className="text-center border-roman-stone/20">
             <CardContent className="p-6">
               <Calendar className="h-8 w-8 text-roman-gold mx-auto mb-4" />
-              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">{t('itinerary.days')}</h3>
-              <p className="text-roman-deep/70">{t('itinerary.days.desc')}</p>
+              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                {t("itinerary.days")}
+              </h3>
+              <p className="text-roman-deep/70">{t("itinerary.days.desc")}</p>
             </CardContent>
           </Card>
 
           <Card className="text-center border-roman-stone/20">
             <CardContent className="p-6">
               <Users className="h-8 w-8 text-roman-gold mx-auto mb-4" />
-              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">{t('itinerary.people')}</h3>
-              <p className="text-roman-deep/70">{t('itinerary.people.desc')}</p>
+              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                {t("itinerary.people")}
+              </h3>
+              <p className="text-roman-deep/70">{t("itinerary.people.desc")}</p>
             </CardContent>
           </Card>
 
           <Card className="text-center border-roman-stone/20">
             <CardContent className="p-6">
               <Clock className="h-8 w-8 text-roman-gold mx-auto mb-4" />
-              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">{t('itinerary.hours')}</h3>
-              <p className="text-roman-deep/70">{t('itinerary.hours.desc')}</p>
+              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                {t("itinerary.hours")}
+              </h3>
+              <p className="text-roman-deep/70">{t("itinerary.hours.desc")}</p>
             </CardContent>
           </Card>
 
           <Card className="text-center border-roman-stone/20">
             <CardContent className="p-6">
               <MapPin className="h-8 w-8 text-roman-gold mx-auto mb-4" />
-              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">{t('itinerary.basilicas')}</h3>
-              <p className="text-roman-deep/70">{t('itinerary.basilicas.desc')}</p>
+              <h3 className="font-playfair text-xl font-semibold text-roman-deep mb-2">
+                {t("itinerary.basilicas")}
+              </h3>
+              <p className="text-roman-deep/70">
+                {t("itinerary.basilicas.desc")}
+              </p>
             </CardContent>
           </Card>
         </div>
@@ -73,58 +83,66 @@ export const Itinerary = () => {
               }`}
               onClick={() => setSelectedDay(idx + 1)}
             >
-              {t('itinerary.day')} {idx + 1}
+              {t("itinerary.day")} {idx + 1}
             </Button>
           ))}
         </div>
 
         {/* Selected Day Content */}
-        {itineraryDays.map((day, idx) => (
-          selectedDay === idx + 1 && (
-            <div key={idx} className="animate-fade-in">
-              <Card className="border-roman-stone/20 shadow-lg">
-                <CardHeader className="bg-roman-stone/10">
-                  <CardTitle className="font-playfair text-2xl text-roman-deep text-center">
-                    {day.title}
-                  </CardTitle>
-                  <div className="flex flex-wrap gap-2 justify-center mt-4">
-                    {day.highlights.map((highlight, hIdx) => (
-                      <Badge key={hIdx} variant="secondary" className="bg-roman-gold/10 text-roman-deep">
-                        {highlight}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <div className="space-y-8">
-                    {day.locations.map((location, locIdx) => (
-                      <div key={locIdx} className="border-l-4 border-roman-gold pl-6">
-                        <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-3">
-                          {location.name}
-                        </h4>
-                        <p className="text-roman-deep/80 mb-4 leading-relaxed">
-                          {location.description}
-                        </p>
-                        {location.relics && location.relics.length > 0 && (
-                          <div>
-                            <h5 className="font-semibold text-roman-deep mb-2">
-                              {t('itinerary.relics') || "Relicve și Moaște:"}
-                            </h5>
-                            <ul className="list-disc list-inside text-roman-deep/70 space-y-1">
-                              {location.relics.map((relic, rIdx) => (
-                                <li key={rIdx}>{relic}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )
-        ))}
+        {itineraryDays.map(
+          (day, idx) =>
+            selectedDay === idx + 1 && (
+              <div key={idx} className="animate-fade-in">
+                <Card className="border-roman-stone/20 shadow-lg">
+                  <CardHeader className="bg-roman-stone/10">
+                    <CardTitle className="font-playfair text-2xl text-roman-deep text-center">
+                      {day.title}
+                    </CardTitle>
+                    <div className="flex flex-wrap gap-2 justify-center mt-4">
+                      {day.highlights.map((highlight, hIdx) => (
+                        <Badge
+                          key={hIdx}
+                          variant="secondary"
+                          className="bg-roman-gold/10 text-roman-deep"
+                        >
+                          {highlight}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="space-y-8">
+                      {day.locations.map((location, locIdx) => (
+                        <div
+                          key={locIdx}
+                          className="border-l-4 border-roman-gold pl-6"
+                        >
+                          <h4 className="font-playfair text-xl font-semibold text-roman-deep mb-3">
+                            {location.name}
+                          </h4>
+                          <p className="text-roman-deep/80 mb-4 leading-relaxed">
+                            {location.description}
+                          </p>
+                          {location.relics && location.relics.length > 0 && (
+                            <div>
+                              <h5 className="font-semibold text-roman-deep mb-2">
+                                {t("itinerary.relics") || "Relicve și Moaște:"}
+                              </h5>
+                              <ul className="list-disc list-inside text-roman-deep/70 space-y-1">
+                                {location.relics.map((relic, rIdx) => (
+                                  <li key={rIdx}>{relic}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )
+        )}
       </div>
     </section>
   );

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -10,10 +9,10 @@ export const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:Background ? `url(${Background})` : 'none',
+          backgroundImage: Background ? `url(${Background})` : "none",
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
@@ -23,14 +22,14 @@ export const HeroSection = () => {
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
         <div className="animate-fade-in">
           <h1 className="font-playfair text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-gradient block">{t('hero.title')}</span>
+            <span className="text-gradient block">{t("hero.title")}</span>
             <span className="text-roman-gold">ROMA</span>
           </h1>
-          
+
           <div className="font-playfair text-xl md:text-2xl mb-8 space-y-2">
-            <p className="text-roman-gold">{t('hero.subtitle')}</p>
-            <p className="text-white">{t('hero.caput')}</p>
-            <p className="text-roman-stone">{t('hero.eternal')}</p>
+            <p className="text-roman-gold">{t("hero.subtitle")}</p>
+            <p className="text-white">{t("hero.caput")}</p>
+            <p className="text-roman-stone">{t("hero.eternal")}</p>
           </div>
 
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-8 text-sm md:text-base">
